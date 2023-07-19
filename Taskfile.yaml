@@ -3,8 +3,7 @@ version: '3'
 tasks:
   dev:
     cmds:
-      - go run main.go
-      - npx tailwindcss -i ./input.css -o ./static/style.css --watch 
+      - ~/workspace/go/bin/air
   deploy:
     cmds:
       - flyctl deploy
