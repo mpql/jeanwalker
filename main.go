@@ -46,7 +46,7 @@ func GetData() map[string]RecordingData {
 	data["04_StoriesAboutEdAndAlice"] = RecordingData{
 		Title:       "Stories about Ed and Alice",
 		Description: "Mary and Jean share about Ed and Alice Montag (their parents), the move to Sac City and life in the early days at 606 Oak Street.",
-		Filename:    "Stories_about_Ed_and_Alice.mp3",
+		Filename:    "Stories_about_Alice_and_Ed.mp3",
 		Time:        "19:05",
 	}
 
@@ -81,7 +81,7 @@ func GetData() map[string]RecordingData {
 	data["09_JeansStory"] = RecordingData{
 		Title:       "Jean's Story, original recording",
 		Description: "The unedited version of Jean’s history. You can hear her humor and charm in this longer version - along with a bit more background noise and tangents.",
-		Filename:    "Jeans_Story_unedited.mp3",
+		Filename:    "Jeans_Story.mp3",
 		Time:        "30:26",
 	}
 	return data
