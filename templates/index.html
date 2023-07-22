@@ -9,8 +9,13 @@
   <script src="/static/bootstrap.bundle.min.js"
     integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
     crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
   <title>Memories of Jean Walker</title>
   <style>
+    a {
+      color: #4a4a4a;
+    }
+
     li {
       list-style-type: none;
     }
@@ -22,60 +27,56 @@
     .list-group-item {
       background-color: #fbfde1;
     }
+
+    .audio_description {
+      margin-top: 0.5em;
+    }
   </style>
 </head>
 
 <body>
   <div class="container-fluid text-center">
     <div class></div>
-    <h1 style="margin-top: 1em;">Memories of Jean Walker</h1>
+    <h1 style="margin-top: 0.5em;">Lois Jean Montag Walker</h1>
+    <p class="lead">October 5, 1925 - December 25, 2022</p>
     <img src="/static/media/jean.jpg" class="img-fluid rounded" alt="Jean Walker">
-    <h3 style="margin-top: 0.5em">Recipes</h3>
-    <ul class="list-group list-group-flush">
-      <li class="list-group-item"><a href="/static/lj_brownies.png">LJ
-          Brownies</a></li>
-    </ul>
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">
 
-    <h3 style="margin-top: 1em;">Audio Recordings</h3>
-    <ul class="list-group list-group-flush">
-      <li class="list-group-item"><a href="/static/media/Jean_Walker_Life_in_Review.mp3">Jean Walker: Life
-          in Review</a>
-        <span class="badge bg-secondary-subtle">4:04</span>
-      </li>
-      <li class="list-group-item"><a href="/static/media/Rachels_Introduction.mp3">Rachel's
-          Introduction</a>
-        <span class="badge bg-secondary-subtle">2:08</span>
-      </li>
+            <h1>LJ Brownies</h1>
 
-      <li class="list-group-item"><a href="/static/media/Story_of_the_Yellow_Dresses.mp3">
-          Story of the Yellow Dresses</a>
-        <span class="badge bg-secondary-subtle">3:39</span>
-      </li>
-      <li class="list-group-item"><a href="/static/media/Stories_about_Alice_and_Ed.mp3">
-          Stories about Alice and Ed</a>
-        <span class="badge bg-secondary-subtle">19:05</span>
-      </li>
-      <li class="list-group-item"><a href="/static/media/Mary_Montags_Story.mp3">Mary
-          Montag's Story</a>
-        <span class="badge bg-secondary-subtle">24:34</span>
-      </li>
-      <li class="list-group-item"><a href="/static/media/Mary_Montags_Epic_Travels.mp3">Mary's Epic Travels</a>
-        <span class="badge bg-secondary-subtle">58:17</span>
-      </li>
-      <li class="list-group-item"><a href="/static/media/Visiting_Tom_Montags_Grave.mp3">
-          Visiting Tom Montag's Grave</a>
-        <span class="badge bg-secondary-subtle">5:51</span>
-      </li>
-      <li class="list-group-item"><a href="/static/media/Alice_Montag_and_Cars.mp3">Alice
-          Montag and Cars</a>
-        <span class="badge bg-secondary-subtle">5:17</span>
-      </li>
-      <li class="list-group-item"><a href="/static/media/Jeans_Story.mp3">Jean's
-          Story, Original Recording</a>
-        <span class="badge bg-secondary-subtle">30:26</span>
-      </li>
-    </ul>
+            <h5>This is a quick and delicious recipe for brownies that Jean would whip up for a quick treat for Bridge
+              Club, to take to a friend on the mend or for a visitor. She didn’t enjoy cooking but these brownies were a
+              quick crowd pleaser. <br><br><a href="/brownies.html">Click here for the
+                recipe!</a></h5>
+          </li>
+        </ul>
 
+        <h1 style="margin-top: 1em;">Audio Recordings</h3>
+          <h5>
+            In 2009, Rachel Newby Holmes, Jean’s oldest grandchild did a series of voice interviews with Jean and Mary
+            Montag about their lives, adventures and family history.
+          </h5>
+          <p>Click or tap to listen. You may also download any recording by clicking the arrow icon next to it.</p>
+          <ul class="list-group list-group-flush">
+            {{ range $k, $v := . }}
+            <li class="list-group-item">
+              <a href="/static/media/{{ $v.Filename }}">
+                {{ $v.Title }}
+              </a> <span class="badge bg-secondary-subtle">{{ $v.Time }}</span>
+              <a href="/download/{{ $v.Filename }}">
+                <i class="bi bi-arrow-down-circle-fill"></i>
+              </a>
+              <p class="audio_description">
+                {{ $v.Description }}
+              </p>
+            </li>
+            {{ end }}
+          </ul>
+      </div>
+    </div>
   </div>
   <div class="text-center" style="margin-top: 1em;">
     <img src="/static/media/young_jean.jpg" class="img-fluid rounded" alt="Jean Walker">
