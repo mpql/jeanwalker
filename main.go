@@ -38,7 +38,7 @@ func GetData() map[string]RecordingData {
 
 	data["03_StoryOfTheYellowDress"] = RecordingData{
 		Title:       "Story of the Yellow Dresses",
-		Description: "Jean wore four yellow dresses to four events: two weddings and two milestone anniversaries. Her great grandchild wore yellow dresses and vests at her memorial service in her honor.",
+		Description: "Jean wore four yellow dresses to four events: two weddings and two milestone anniversaries. Her great grandchildren wore yellow dresses and vests at her memorial service in her honor.",
 		Filename:    "Story_of_the_Yellow_Dresses.mp3",
 		Time:        "3:39",
 	}
