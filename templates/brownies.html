@@ -4,82 +4,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="/static/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-    <script src="/static/bootstrap.bundle.min.js"
-        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
-        crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="/static/favicon.ico">
+    <link rel="stylesheet" href="/static/bootstrap.min.css"
+      integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <!--<link rel="stylesheet" media="screen" href="/static/bootstrap-icons-1.10.5/font/bootstrap-icons.css">-->
+    <script defer src="/static/js/fa/6.4.0/solid.min.js"></script>
+    <script defer src="/static/js/fa/6.4.0/fontawesome.min.js"></script><!--
+    <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
+    <!-- <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
+    <!-- # The below substitutes in for remote connections to the above. :) -->
+    <link rel="stylesheet" href="/static/css/font_merriweather.css">
+    <link rel="stylesheet" media="screen" href="/static/css/extra.css">
     <title>LJ Brownies Recipe</title>
-    <style>
-        a {
-            color: #4a4a4a;
-        }
-
-        li {
-            list-style-type: none;
-        }
-
-        body {
-            background-color: #fbfde1;
-        }
-
-        .list-group-item {
-            background-color: #fbfde1;
-        }
-
-        .audio_description {
-            margin-top: 0.5em;
-        }
-    </style>
 </head>
 
 <body>
-    <div class="container-fluid">
-        <div class="row text-center">
-            <h1 style="margin-top: 1em;">LJ Brownies</h1>
-            <div class="col-md-8 offset-md-2">
+    <div class="container-fluid recipe">
+        <div>
+            <h1>LJ Brownies</h1>
+            <div>
                 <p class="lead">
-                    This is a quick and delicious recipe for brownies that Jean would whip up for a quick treat for
-                    Bridge Club, to take to a friend on the mend or for a visitor. She didn’t enjoy cooking but
-                    these brownies were a quick crowd pleaser.
+                    This is a quick and delicious recipe for brownies that Jean would whip up for a quick treat for Bridge Club, to take to a friend on the mend or for a visitor. She didn't enjoy cooking, but these brownies were a quick crowd pleaser.
                 </p>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-6 offset-md-3">
-                <strong style="margin-top: 0.5em">Ingredients</strong>
-                <ul>
-                    <li>1 stick butter</li>
-                    <li>1 cup sugar</li>
-                    <li>2 eggs</li>
-                    <li>½ cup flour</li>
-                    <li>½ cup cocoa powder</li>
-                </ul>
-                <strong style="margin-top: 0.5em">Instructions</strong>
-                <ol>
-                    <li>Preheat the oven to 300 degrees.</li>
-                    <li>Butter and flour a 8x8 pan.</li>
-                    <li>In a large bowl or mixer: cream butter and sugar together.</li>
-                    <li>Add eggs and mix.</li>
-                    <li>Mix in flour and cocoa powder.</li>
-                    <li>Pour into baking dish</li>
-                    <li>Bake for 20-25 mins - they are ready when a knife comes out clean.</li>
-                </ol>
-                <strong style="margin-top: 0.5em">Optional Additions</strong>
-                <ul>
-                    <li>Peanut butter swirled into the top</li>
-                    <li>Chocolate Chips (PB chips or butterscotch chips)</li>
-                    <li>Nuts of your choice</li>
-                </ul>
-            </div>
+        <div class="recipe-card">
+            <h2>Ingredients</h2>
+            <ul class="ingredients">
+                <li>1 stick butter</li>
+                <li>1 cup sugar</li>
+                <li>2 eggs</li>
+                <li>½ cup flour</li>
+                <li>½ cup cocoa powder</li>
+            </ul>
+            <h2>Optional Additions</h2>
+            <ul class="optional-additions">
+                <li>Peanut butter swirled into the top</li>
+                <li>Chocolate Chips (PB chips or butterscotch chips)</li>
+                <li>Nuts of your choice</li>
+            </ul>
+            <h2>Directions</h2>
+            <ol class="directions">
+                <li>Preheat the oven to 300 degrees.</li>
+                <li>Butter and flour a 8x8 pan.</li>
+                <li>In a large bowl or mixer: cream butter and sugar together.</li>
+                <li>Add eggs and mix.</li>
+                <li>Mix in flour and cocoa powder.</li>
+                <li>Pour into baking dish</li>
+                <li>Bake for 20-25 mins&mdash;they are ready when a knife comes out clean.</li>
+            </ol>
         </div>
-    </div>
 
-    <div class="row">
-        <div class="text-center" style="margin-top: 1em;">
-            <img src="/static/media/young_jean.jpg" class="img-fluid rounded" alt="Jean Walker">
+        <div class="text-center position-relative young-jean">
+        <img alt-text="A picture of young Jean Walker" src="/static/media/young_jean_transparent.png" class="img-fluid rounded"
+            alt="A picture of young Jean Walker">
+        <div class="photo-caption">Young Jean</div>
         </div>
         <!-- <img src="/static/daisy.png" class="img-fluid rounded" alt="Jean Walker"> -->
+
     </div>
 </body>
 
