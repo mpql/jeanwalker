@@ -39,7 +39,9 @@
     <div class></div>
     <h1 style="margin-top: 0.5em;">Lois Jean Montag Walker</h1>
     <p class="lead">October 5, 1925 - December 25, 2022</p>
-    <img src="/static/media/jean.jpg" class="img-fluid rounded" alt="Jean Walker">
+    <img alt-text="A picture of Jean in 2014, at Rachel's Wedding" src="/static/media/jean.jpg" class="img-fluid rounded" alt="Jean Walker">
+    <p><small>Jean in 2014, at Rachel's Wedding</small></p>
+
     <div class="row">
       <div class="col-md-6 offset-md-3">
         <ul class="list-group list-group-flush">
@@ -47,18 +49,19 @@
 
             <h1>LJ Brownies</h1>
 
-            <h5>This is a quick and delicious recipe for brownies that Jean would whip up for a quick treat for Bridge
+            <p class="lead">This is a quick and delicious recipe for brownies that Jean would whip up for a quick treat
+              for Bridge
               Club, to take to a friend on the mend or for a visitor. She didn’t enjoy cooking but these brownies were a
               quick crowd pleaser. <br><br><a href="/brownies.html">Click here for the
-                recipe!</a></h5>
+                recipe!</a></p>
           </li>
         </ul>
 
         <h1 style="margin-top: 1em;">Audio Recordings</h3>
-          <h5>
+          <p class="lead">
             In 2009, Rachel Newby Holmes, Jean’s oldest grandchild did a series of voice interviews with Jean and Mary
             Montag about their lives, adventures and family history.
-          </h5>
+          </p>
           <p>Click or tap to listen. You may also download any recording by clicking the arrow icon next to it.</p>
           <ul class="list-group list-group-flush">
             {{ range $k, $v := . }}
@@ -74,12 +77,19 @@
               </p>
             </li>
             {{ end }}
+            <li class="list-group-item">
+              <div class="text-center" style="margin-top: 1em;">
+                <p>Made with <span style="color: #df5454">♥</span> by Will Atlas and Rachel Newby Holmes</p>
+              </div>
+            </li>
           </ul>
       </div>
     </div>
   </div>
+
   <div class="text-center" style="margin-top: 1em;">
-    <img src="/static/media/young_jean.jpg" class="img-fluid rounded" alt="Jean Walker">
+    <img alt-text="A picture of young Jean" src="/static/media/young_jean.jpg" class="img-fluid rounded" alt="Jean Walker">
+    <p><small>Young Jean</small></p>
   </div>
   <!-- <img src="/static/daisy.png" class="img-fluid rounded" alt="Jean Walker"> -->
 </body>
