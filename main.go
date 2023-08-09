@@ -1,16 +1,12 @@
 package main
 
 import (
-	"bytes"
 	"embed"
-	"fmt"
 	"html/template"
-	"io/ioutil"
 	"log"
 	"net/http"
 	"os"
-	"strconv"
-	"time"
+	"strings"
 )
 
 type RecordingData struct {
@@ -91,33 +87,17 @@ func GetData() map[string]RecordingData {
 var resources embed.FS
 var t = template.Must(template.ParseFS(resources, "templates/*"))
 
-// Force Downlaods
-func ForceDownload(w http.ResponseWriter, r *http.Request, file string) {
-	downloadBytes, err := ioutil.ReadFile(file)
-
-	if err != nil {
-		fmt.Println(err)
+func addDownloadHeaders(fs http.Handler) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		// Generate the server headers
+		filename := strings.TrimPrefix(r.URL.Path, "/download/")
+		w.Header().Set("Content-Type", "audio/mpeg")
+		w.Header().Set("Content-Disposition", "attachment; filename="+filename+"")
+		w.Header().Set("Expires", "0")
+		w.Header().Set("Content-Transfer-Encoding", "binary")
+		w.Header().Set("Content-Control", "private, no-transform, no-store, must-revalidate")
+		fs.ServeHTTP(w, r)
 	}
-
-	// set the default MIME type to send
-	mime := http.DetectContentType(downloadBytes)
-	fileSize := len(string(downloadBytes))
-
-	// Generate the server headers
-	w.Header().Set("Content-Type", mime)
-	w.Header().Set("Content-Disposition", "attachment; filename="+file+"")
-	w.Header().Set("Expires", "0")
-	w.Header().Set("Content-Transfer-Encoding", "binary")
-	w.Header().Set("Content-Length", strconv.Itoa(fileSize))
-	w.Header().Set("Content-Control", "private, no-transform, no-store, must-revalidate")
-
-	//b := bytes.NewBuffer(downloadBytes)
-	//if _, err := b.WriteTo(w); err != nil {
-	//              fmt.Fprintf(w, "%s", err)
-	//      }
-
-	// force it down the client's.....
-	http.ServeContent(w, r, file, time.Now(), bytes.NewReader(downloadBytes))
 }
 
 func main() {
@@ -125,6 +105,10 @@ func main() {
 	if port == "" {
 		port = "8080"
 	}
+
+	// Download file serving
+	fsdl := http.FileServer(http.Dir("static/media/"))
+	http.Handle("/download/", http.StripPrefix("/download/", addDownloadHeaders(fsdl)))
 
 	// Static file serving
 	fs := http.FileServer(http.Dir("static/"))
