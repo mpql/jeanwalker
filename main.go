@@ -107,21 +107,23 @@ func main() {
 	}
 
 	// Download file serving
-	fsdl := http.FileServer(http.Dir("static/media/"))
+	fsdl := WithLogging(http.FileServer(http.Dir("static/media/")))
 	http.Handle("/download/", http.StripPrefix("/download/", addDownloadHeaders(fsdl)))
 
 	// Static file serving
-	fs := http.FileServer(http.Dir("static/"))
+	fs := WithLogging(http.FileServer(http.Dir("static/")))
 	http.Handle("/static/", http.StripPrefix("/static/", fs))
 
 	// Routes
-	http.HandleFunc("/brownies.html", func(w http.ResponseWriter, r *http.Request) {
+	http.Handle("/brownies.html", WithLogging(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		w.WriteHeader(http.StatusOK)
 		t.ExecuteTemplate(w, "brownies.html", nil)
-	})
+	})))
 
-	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+	http.Handle("/", WithLogging(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		w.WriteHeader(http.StatusOK)
 		t.ExecuteTemplate(w, "index.html", GetData())
-	})
+	})))
 
 	// Start Server
 	log.Println("listening on", port)
