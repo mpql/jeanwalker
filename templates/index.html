@@ -4,96 +4,95 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="/static/bootstrap.min.css" rel="stylesheet"
+  <link rel="shortcut icon" href="/static/favicon.ico">
+  <link rel="stylesheet" href="/static/bootstrap.min.css"
     integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-  <script src="/static/bootstrap.bundle.min.js"
-    integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
-    crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="/static/bootstrap-icons-1.10.5/font/bootstrap-icons.css">
+  <!--<link rel="stylesheet" media="screen" href="/static/bootstrap-icons-1.10.5/font/bootstrap-icons.css">-->
+  <script defer src="/static/js/fa/6.4.0/solid.min.js"></script>
+  <script defer src="/static/js/fa/6.4.0/fontawesome.min.js"></script><!--
+  <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
+  <!-- <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
+  <!-- # The below substitutes in for remote connections to the above. :) -->
+  <link rel="stylesheet" href="/static/css/font_merriweather.css">
+  <link rel="stylesheet" media="screen" href="/static/css/extra.css">
   <title>Memories of Jean Walker</title>
-  <style>
-    a {
-      color: #4a4a4a;
-    }
-
-    li {
-      list-style-type: none;
-    }
-
-    body {
-      background-color: #fbfde1;
-    }
-
-    .list-group-item {
-      background-color: #fbfde1;
-    }
-
-    .audio_description {
-      margin-top: 0.5em;
-    }
-  </style>
 </head>
 
 <body>
-  <div class="container-fluid text-center">
+  <div class="container-fluid">
     <div class></div>
-    <h1 style="margin-top: 0.5em;">Lois Jean Montag Walker</h1>
-    <p class="lead">October 5, 1925 - December 25, 2022</p>
-    <img alt-text="A picture of Jean in 2014, at Rachel's Wedding" src="/static/media/jean.jpg"
-      class="img-fluid rounded" alt="Jean Walker">
-    <p><small>Jean in 2014, at Rachel's Wedding</small></p>
-
-    <div class="row">
-      <div class="col-md-6 offset-md-3">
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item">
-
-            <h1>LJ Brownies</h1>
-
-            <p class="lead">This is a quick and delicious recipe for brownies that Jean would whip up for a quick treat
-              for Bridge
-              Club, to take to a friend on the mend or for a visitor. She didn’t enjoy cooking but these brownies were a
-              quick crowd pleaser. <br><br><a href="/brownies.html">Click here for the
-                recipe!</a></p>
-          </li>
-        </ul>
-
-        <h1 style="margin-top: 1em;">Audio Recordings</h3>
-          <p class="lead">
-            In 2009, Rachel Newby Holmes, Jean’s oldest grandchild did a series of voice interviews with Jean and Mary
-            Montag about their lives, adventures and family history.
-          </p>
-          <p>Click or tap to listen. You may also download any recording by clicking the arrow icon next to it.</p>
-          <ul class="list-group list-group-flush">
-            {{ range $k, $v := . }}
-            <li class="list-group-item">
-              <a href="/static/media/{{ $v.Filename }}">
-                {{ $v.Title }}
-              </a> <span class="badge bg-secondary">{{ $v.Time }}</span>
-              <a href="/download/{{ $v.Filename }}">
-                <i class="bi bi-arrow-down-circle-fill"></i>
-              </a>
-              <p class="audio_description">
-                {{ $v.Description }}
-              </p>
-            </li>
-            {{ end }}
-            <li class="list-group-item">
-              <div class="text-center" style="margin-top: 1em;">
-                <p>Made with <span style="color: #df5454">♥</span> by Rachel Newby Holmes and Will Atlas</p>
-              </div>
-            </li>
-          </ul>
-      </div>
+    <h1>Lois Jean Montag Walker</h1>
+    <p class="lead years">October 5, 1925&mdash;December 25, 2022</p>
+    <div class="photograph">
+      <img alt-text="A picture of Jean in 2014, at Rachel's Wedding" src="/static/media/jean.jpg"
+        class="img-fluid rounded" alt="Jean Walker">
+      <div class="photo-caption">Jean in 2014, at Rachel's Wedding</div>
     </div>
+
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">
+
+        <h1>LJ Brownies</h1>
+
+        <p class="lead">This is a quick and delicious recipe for brownies that Jean would whip up for a quick treat
+          for Bridge Club, to take to a friend on the mend or for a visitor. She didn't enjoy cooking but these brownies were a quick crowd pleaser.
+        </p>
+        <div class="recipe-button-container">
+          <a class="button recipe" href="/brownies.html"><i class="fa-solid fa-cake-slice"></i> Click here<br>for the recipe!</a>
+        </div>
+      </li>
+    </ul>
+
+    <h1>Audio Recordings</h3>
+      <p class="lead">
+        In 2009, Rachel Newby Holmes, Jean's oldest grandchild did a series of voice interviews with Jean and Mary
+        Montag about their lives, adventures and family history.
+      </p>
+      <p>Click or tap to listen.<br>You may also download any recording by clicking the "<i class="fa-solid fa-arrow-down-to-bracket"></i> Download" button next to it.</p>
+      <ul class="list-group list-group-flush">
+        {{ range $k, $v := . }}
+        <li class="list-group-item audio-card">
+          <h3 class="audio_title">{{ $v.Title }}</h3>
+          <p class="audio_description">
+            {{ $v.Description }}
+          </p>
+          <audio class="audio" controls preload="metadata">
+            <source src="/static/media/{{ $v.Filename }}">
+            <a class="button listen" href="/static/media/{{ $v.Filename }}">
+              <i class="fa-solid fa-headphones"></i> Listen <span class="badge bg-secondary">{{ $v.Time }}</span>
+            </a>
+          </audio>
+          <!--<div id="audio-controls-{{ $k }}" class="controls" data-state="hidden">
+            <button id="playpause" type="button" data-state="play">Play/Pause</button>
+            <div class="progress">
+              <progress id="progress" value="0" min="0">
+                <span id="progress-bar"></span>
+              </progress>
+            </div>
+          </div>-->
+          <a class="button download" href="/download/{{ $v.Filename }}">
+            <i class="fa-solid fa-arrow-down-to-bracket"></i> Download
+          </a>
+        </li>
+        {{ end }}
+      </ul>
+
+      <div class="text-center position-relative young-jean">
+        <img alt-text="A picture of young Jean Walker" src="/static/media/young_jean_transparent.png" class="img-fluid rounded"
+          alt="A picture of young Jean Walker">
+        <div class="photo-caption">Young Jean</div>
+      </div>
+      <!-- <img src="/static/daisy.png" class="img-fluid rounded" alt="Jean Walker"> -->
+
+      <div class="text-center">
+        <p class="footer-text">Made with <i class="fa-solid fa-heart">&hearts;</i> by Rachel Newby Holmes and Will Atlas</p>
+      </div>
   </div>
 
-  <div class="text-center" style="margin-top: 1em;">
-    <img alt-text="A picture of young Jean" src="/static/media/young_jean.jpg" class="img-fluid rounded"
-      alt="Jean Walker">
-    <p><small>Young Jean</small></p>
-  </div>
-  <!-- <img src="/static/daisy.png" class="img-fluid rounded" alt="Jean Walker"> -->
+  <script src="/static/bootstrap.bundle.min.js"
+  integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+  crossorigin="anonymous"></script>
 </body>
 
 </html>
